@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "CDD_Library_Updated")(type "KiCad")(uri "${KIPRJMOD}/CDD_Library_Updated.kicad_sym")(options "")(descr ""))
+)
