@@ -1,4 +1,4 @@
-24646017749623279
+24649501034858900
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -2569,12 +2569,26 @@ speaker CUI
 2
 2
 CDD Updated
+CAPC1005X55N_0.1NF
+
+
+0
+2
+2
+CDD Updated
+CAPC1608X90N_47uF
+
+
+0
+2
+2
+CDD Updated
 MAX30101_PPG_Sensor
 
 
 0
-0
-0
+6
+6
 CDD Updated
 MOUDLE14P-SMD-2.54-21X17.8MM
 
