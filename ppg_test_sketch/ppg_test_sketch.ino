@@ -54,5 +54,10 @@ void loop(){
     Serial.println(body.oxygen); 
     Serial.print("Status: ");
     Serial.println(body.status); 
+
+    // Reading temperature
+    Serial.print("Temperature: ");
+    Serial.println(temperatureRead());
+        
     delay(250); // Slowing it down, we don't need to break our necks here.
 }
