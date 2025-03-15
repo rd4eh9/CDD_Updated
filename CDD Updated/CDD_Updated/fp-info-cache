@@ -1,4 +1,4 @@
-24649501034858900
+24651244074496072
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -2583,6 +2583,13 @@ CAPC1608X90N_47uF
 2
 2
 CDD Updated
+JST_B2B-XH-A
+
+
+0
+2
+2
+CDD Updated
 MAX30101_PPG_Sensor
 
 
@@ -2594,8 +2601,8 @@ MOUDLE14P-SMD-2.54-21X17.8MM
 
 
 0
-14
-14
+16
+16
 CDD Updated
 XDCR_DPS368XTSA1_Pressure_Sensor
 
