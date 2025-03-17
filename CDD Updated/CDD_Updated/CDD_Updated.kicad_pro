@@ -496,7 +496,7 @@
       "plot": "",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "",
+      "step": "CDD_Updated.step",
       "svg": "",
       "vrml": ""
     },
