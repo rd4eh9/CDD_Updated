@@ -1,63 +1,69 @@
-#include <SparkFun_Bio_Sensor_Hub_Library.h>
-#include <Wire.h>
+// #include <SparkFun_Bio_Sensor_Hub_Library.h>
+// #include <Wire.h>
 
-// No other Address options.
-#define DEF_ADDR 0x55
+// // No other Address options.
+// #define DEF_ADDR 0x55
 
-// Reset pin, MFIO pin
-const int resPin = 1;
-const int mfioPin = 2;
+// // Reset pin, MFIO pin
+// const int resPin = 2;
+// const int mfioPin = 1;
 
-// Takes address, reset pin, and MFIO pin.
-SparkFun_Bio_Sensor_Hub bioHub(resPin, mfioPin); 
+// // Takes address, reset pin, and MFIO pin.
+// SparkFun_Bio_Sensor_Hub bioHub(resPin, mfioPin); 
 
-bioData body;  
+// bioData body;  
 
-void setup(){
+// void setup(){
 
-  Serial.begin(115200);
+//   Serial.begin(115200);
 
-  Wire.begin();
-  int result = bioHub.begin();
-  if (!result)
-    Serial.println("Sensor started!");
-  else
-    Serial.println("Could not communicate with the sensor!!!");
+//   Wire.begin();
+//   int result = bioHub.begin();
+//   if (!result)
+//     Serial.println("Sensor started!");
+//   else
+//     Serial.println("Could not communicate with the sensor!!!");
 
-  Serial.println("Configuring Sensor...."); 
-  int error = bioHub.configBpm(MODE_TWO); // Configuring just the BPM settings. 
-  if(!error){
-    Serial.println("Sensor configured.");
-  }
-  else {
-    Serial.println("Error configuring sensor.");
-    Serial.print("Error: "); 
-    Serial.println(error); 
-  }
-  // Data lags a bit behind the sensor, if you're finger is on the sensor when
-  // it's being configured this delay will give some time for the data to catch
-  // up. 
-  delay(4000); 
+//   Serial.println("Configuring Sensor...."); 
+//   int error = bioHub.configBpm(MODE_TWO); // Configuring just the BPM settings. 
+//   if(!error){
+//     Serial.println("Sensor configured.");
+//   }
+//   else {
+//     Serial.println("Error configuring sensor.");
+//     Serial.print("Error: "); 
+//     Serial.println(error); 
+//   }
+//   // Data lags a bit behind the sensor, if you're finger is on the sensor when
+//   // it's being configured this delay will give some time for the data to catch
+//   // up. 
+//   delay(4000); 
 
-}
+// }
 
-void loop(){
+// void loop(){
 
-    // Information from the readBpm function will be saved to our "body"
-    // variable.  
-    body = bioHub.readBpm();
-    Serial.print("Heartrate: ");
-    Serial.println(body.heartRate); 
-    Serial.print("Confidence: ");
-    Serial.println(body.confidence); 
-    Serial.print("Oxygen: ");
-    Serial.println(body.oxygen); 
-    Serial.print("Status: ");
-    Serial.println(body.status); 
+//     // Information from the readBpm function will be saved to our "body"
+//     // variable.  
 
-    // Reading temperature
-    Serial.print("Temperature: ");
-    Serial.println(temperatureRead());
-        
-    delay(250); // Slowing it down, we don't need to break our necks here.
-}
+//     // // Data read
+//     body = bioHub.readBpm();
+//     Serial.print("Heartrate: ");
+//     Serial.println(body.heartRate); 
+//     Serial.print("Confidence: ");
+//     Serial.println(body.confidence); 
+//     Serial.print("Oxygen: ");
+//     Serial.println(body.oxygen); 
+//     Serial.print("Status: ");
+//     Serial.println(body.status); 
+
+//     // Reading temperature
+//     Serial.print("Temperature: ");
+//     Serial.println(temperatureRead());
+
+//     delay(2000);
+
+
+    
+
+// }
