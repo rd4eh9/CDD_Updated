@@ -33,6 +33,7 @@ void setup(){
 
   Serial.println("Configuring Sensor...."); 
   int error = bioHub.configBpm(MODE_TWO); // Configuring just the BPM settings. 
+  bioHub.configSensorBpm(100, 215); // Sample rate and pulse width
   if(!error){
     Serial.println("Sensor configured.");
   }
@@ -66,5 +67,9 @@ void loop(){
     Serial.println(body.oxygen); 
     Serial.print("Status: ");
     Serial.println(body.status); 
+    Serial.print("Red Data: ");
+    Serial.println(body.bioHub.getRed());
+    Serial.print("IR Data: ");
+    Serial.println(body.bioHub.getIR());
     delay(250); // Slowing it down, we don't need to break our necks here.
 }
