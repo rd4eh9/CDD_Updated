@@ -32,15 +32,22 @@ void setup(){
     Serial.println("Could not communicate with the sensor!!!");
 
   Serial.println("Configuring Sensor...."); 
-  int error = bioHub.configBpm(MODE_TWO); // Configuring just the BPM settings. 
-  bioHub.configSensorBpm(100, 215); // Sample rate and pulse width
-  if(!error){
+  int error0 = bioHub.configBpm(MODE_TWO); // Configuring just the BPM settings. 
+  //bioHub.configSensorBpm(100, 215); // Sample rate and pulse width
+  if(!error0){
     Serial.println("Sensor configured.");
   }
   else {
     Serial.println("Error configuring sensor.");
     Serial.print("Error: "); 
-    Serial.println(error); 
+    Serial.println(error0); 
+  }
+  uint8_t error1 = bioHub.setPulseWidth(215);
+  if (error1 == 0) {
+    Serial.println("Pulse width set successfully to 215us.");
+  } else {
+    Serial.print("Error setting pulse width: ");
+    Serial.println(error1);
   }
 
   //Adjust LED Intensity
@@ -68,8 +75,9 @@ void loop(){
     Serial.print("Status: ");
     Serial.println(body.status); 
     Serial.print("Red Data: ");
-    Serial.println(body.bioHub.getRed());
+    Serial.println(body.redLed);
     Serial.print("IR Data: ");
-    Serial.println(body.bioHub.getIR());
+    Serial.println(body.irLed);
+
     delay(250); // Slowing it down, we don't need to break our necks here.
 }
