@@ -1,29 +1,41 @@
-#CDD Script
 import serial
 import csv
+import time
 
-# Change COM3 to your Arduino's port
+# Open serial connection (make sure COM port is correct)
 ser = serial.Serial('COM3', 115200, timeout=1)
+
+# Give Arduino time to reset after opening serial
+time.sleep(2)
 
 with open('data.csv', 'w', newline='') as file:
     writer = csv.writer(file)
     writer.writerow(['heart_rate', 'confidence', 'oxygen', 'status', 'temperature'])
+    print("File opened!")
 
     try:
         while True:
+            # Read one full line from Arduino
             line = ser.readline().decode('utf-8', errors='ignore').strip()
 
-            if not line:
+            # Skip empty lines or startup messages
+            if not line or not line[0].isdigit():
                 continue
 
             print(line)
 
+            # Split CSV values
             data = line.split(',')
 
-            # Make sure the line has exactly 5 values
+            # Ensure correct format
             if len(data) == 5:
-                writer.writerow(data)
-                file.flush()  # saves immediately
+                try:
+                    # Convert to floats for clean data
+                    row = [float(x) for x in data]
+                    writer.writerow(row)
+                    file.flush()  # save immediately
+                except ValueError:
+                    print("Skipped non-numeric row:", data)
             else:
                 print("Skipped malformed line:", line)
 
@@ -32,3 +44,4 @@ with open('data.csv', 'w', newline='') as file:
 
     finally:
         ser.close()
+
