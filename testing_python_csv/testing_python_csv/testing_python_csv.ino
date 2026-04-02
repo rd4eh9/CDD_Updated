@@ -35,13 +35,23 @@ void setup(){
   int error = bioHub.configBpm(MODE_TWO); // Configuring just the BPM settings. 
   if(!error){
     Serial.println("Sensor configured.");
+
+    int swError = bioHub.setPulseWidth(118); //changes pwm to 118 and checks that it happened, 0 means success
+    int srError = bioHub.setSampleRate(100); //changes sampling rate to 100Hz and checks that it happened, 0 means success
+
+    if(swError == 0 && srError == 0) //checks for errors
+        Serial.println("Pulse Width (118microseconds) and Sample Rate (100Hz) set successfully!");
+    else
+        Serial.println("Warning: Sensor rejected custom pulse/rate settings.");
   }
+      
   else {
     Serial.println("Error configuring sensor.");
     Serial.print("Error: "); 
     Serial.println(error); 
   }
-
+    
+    
   //Adjust LED Intensity
   //setLedIntensity();
 
