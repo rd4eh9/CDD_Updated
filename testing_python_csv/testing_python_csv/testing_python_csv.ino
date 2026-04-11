@@ -12,6 +12,7 @@ const int mfioPin = 1;
 SparkFun_Bio_Sensor_Hub bioHub(resPin, mfioPin); 
 
 bioData body;  
+bioData rawData;
 
 /*
 void setLedIntensity(uint8_t red, uint8_t ir) {
@@ -67,6 +68,7 @@ void loop(){
     float temp = temperatureRead();
     // Information from the readBpm function will be saved to our "body"
     // variable.  
+    rawData = bioHub.readSensor();
     body = bioHub.readBpm();
     //Serial.print("Heartrate: ");
     Serial.print(body.heartRate); 
@@ -80,8 +82,16 @@ void loop(){
     //Serial.print("Status: ");
     Serial.print(body.status); 
     Serial.print(",");
+
     Serial.print(String(temp));
-    //Serial.println(body.heartRate,body.confidence,body.oxygen,body.status,String(temp));
+    Serial.print(",");
+
+    Serial.print(rawData.irLed);
+    Serial.print(",");
+
+    Serial.print(rawData.redLed);
+    
+    //Serial.println(body.heartRate,body.confidence,body.oxygen,body.status,String(temp),rawdata.irLED,rawdata.redLED);
     Serial.println();
     delay(250); // Slowing it down, we don't need to break our necks here.
 }

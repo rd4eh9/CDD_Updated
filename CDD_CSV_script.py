@@ -8,9 +8,12 @@ ser = serial.Serial('COM3', 115200, timeout=1)
 # Give Arduino time to reset after opening serial
 time.sleep(2)
 
-with open('data.csv', 'w', newline='') as file:
+# File path: datacollection/FirstLast_MM_DD_YY_IndependentVariable_IterationNum.csv
+csv_path = 'datacollection/SayeedAzam_04_11_26_NoMovement_Iter1.csv'
+
+with open(csv_path, 'w', newline='') as file:
     writer = csv.writer(file)
-    writer.writerow(['heart_rate', 'confidence', 'oxygen', 'status', 'temperature'])
+    writer.writerow(['heart_rate', 'confidence', 'oxygen', 'status', 'temperature', 'RawIR', 'RawRed'])
     print("File opened!")
 
     try:
@@ -28,7 +31,7 @@ with open('data.csv', 'w', newline='') as file:
             data = line.split(',')
 
             # Ensure correct format
-            if len(data) == 5:
+            if len(data) == 7:
                 try:
                     # Convert to floats for clean data
                     row = [float(x) for x in data]
