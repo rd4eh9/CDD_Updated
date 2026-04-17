@@ -70,6 +70,9 @@ void loop(){
     // variable.  
     rawData = bioHub.readSensor();
     body = bioHub.readBpm();
+
+    Serial.print(millis());
+    Serial.print(",");
     //Serial.print("Heartrate: ");
     Serial.print(body.heartRate); 
     Serial.print(",");
@@ -93,5 +96,5 @@ void loop(){
     
     //Serial.println(body.heartRate,body.confidence,body.oxygen,body.status,String(temp),rawdata.irLED,rawdata.redLED);
     Serial.println();
-    delay(250); // Slowing it down, we don't need to break our necks here.
+    delay(10); // Slowing it down, we don't need to break our necks here.
 }

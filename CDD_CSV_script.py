@@ -9,11 +9,11 @@ ser = serial.Serial('COM3', 115200, timeout=1)
 time.sleep(2)
 
 # File path: datacollection/FirstLast_MM_DD_YY_IndependentVariable_IterationNum.csv
-csv_path = 'datacollection/SayeedAzam_04_11_26_NoMovement_Iter1.csv'
+csv_path = 'datacollection/SayeedAzam_04_17_26_NoMovement_Iter1.csv'
 
 with open(csv_path, 'w', newline='') as file:
     writer = csv.writer(file)
-    writer.writerow(['heart_rate', 'confidence', 'oxygen', 'status', 'temperature', 'RawIR', 'RawRed'])
+    writer.writerow(['time_stamp_millis', 'heart_rate', 'confidence', 'oxygen', 'status', 'temperature', 'RawIR', 'RawRed'])
     print("File opened!")
 
     try:
@@ -31,7 +31,7 @@ with open(csv_path, 'w', newline='') as file:
             data = line.split(',')
 
             # Ensure correct format
-            if len(data) == 7:
+            if len(data) == 8:
                 try:
                     # Convert to floats for clean data
                     row = [float(x) for x in data]
